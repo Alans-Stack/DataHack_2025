@@ -83,8 +83,8 @@ function send_to_function(opponent, searchType, stat_line,player) {
             let row = document.createElement("tr");
             row.classList.add("stat-result");
             row.innerHTML = `
-                <td class="stat-label">${label}:</td>
-                <td class="stat-value">${value}</td>
+               <td class="stat-label" style="color: white;">${label}:</td>
+               <td class="stat-value" style="color: white;">${value}</td>
             `;
             table.appendChild(row);
         });
@@ -112,32 +112,59 @@ function show_chart(parent,prob_under, prob_over){
     let myChart = new Chart(ctx, {
         type: 'bar',
         data: {
-          labels: ['Probability Under', 'Probability Over'],
-          datasets: [{
-            label: 'LeData',
-            data: [prob_under, prob_over], // Data values for each bar
-            backgroundColor: [
-                'rgba(255, 0, 0, 0.7)', // Red for "Probability Under"
-                'rgba(0, 0, 255, 0.7)'  // Blue for "Probability Over"
-            ],
-            borderColor: [
-                'rgba(255, 0, 0, 1)', // Border color for red
-                'rgba(0, 0, 255, 1)'  // Border color for blue
-            ],
-            borderWidth: 1
-        }]
-    },
-
+            labels: ['Probability Under', 'Probability Over'],
+            datasets: [{
+                label: 'Data',
+                data: [prob_under, prob_over],
+                backgroundColor: [
+                    'rgba(255, 0, 0, 0.7)', // Red for "Probability Under"
+                    'rgba(0, 0, 255, 0.7)'  // Blue for "Probability Over"
+                ],
+                borderColor: [
+                    'rgba(255, 0, 0, 1)', // Border color for red
+                    'rgba(0, 0, 255, 1)'  // Border color for blue
+                ],
+                borderWidth: 1
+            }]
+        },
         options: {
-          scales: {
-            y: {
-              beginAtZero: true
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    ticks: {
+                        color: 'white' // Make Y-axis ticks white
+                    }
+                },
+                x: {
+                    ticks: {
+                        color: 'white' // Make X-axis ticks white
+                    }
+                }
+            },
+            plugins: {
+                legend: {
+                    labels: {
+                        color: 'white' // Make legend text white
+                    }
+                },
+                tooltip: {
+                    callbacks: {
+                        title: function() {
+                            return ''; 
+                        }
+                    },
+                    bodyColor: 'white' 
+                }
+            },
+            elements: {
+                bar: {
+                    borderWidth: 2
+                }
             }
-          }
         }
-      });
-   
-      myChart.update(); 
+    });
+    
+    myChart.update();
 
 }
 

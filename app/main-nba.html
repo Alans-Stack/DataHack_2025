@@ -1,25 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Input</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
-    <style>
-        .active-filter {
-            background-color: #0d6efd;
-            color: white;
-        }
-        .hidden {
-            display: none;
-        }
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>StatPilot</title>
 
-        nav {
-        background: linear-gradient(to right, #0033cc, #cc0000);
-        color: white;
-        }
-          /* Centering the form */
+ 
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@700&display=swap"
+    rel="stylesheet"
+  />
+
+  <style>
+    
+    body {
+        background-color: #2c2c2c;
+      color: white;
+      font-family: 'Roboto', sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+   
+    
+    .navbar {
+      background-color: #1D428A; 
+      min-height: 60px; 
+      display: flex;
+      align-items: center;
+      padding: 0 1rem;
+    }
+
+  
+    .back-arrow {
+      color: white;
+      font-size: 1.5rem;
+      text-decoration: none;
+      margin-right: 1rem;
+    }
+    .back-arrow:hover {
+      color: #f0f0f0;
+    }
+
+   
+    .navbar-brand {
+      font-family: 'Barlow Semi Condensed', sans-serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: white;
+      margin: 0;
+      text-decoration: none;
+    }
+
+
+    label {
+      color: white;
+      font-weight: 500;
+    }
+
+    
+    .btn-primary {
+      background-color: #1D428A;
+      border: none;
+      font-family: 'Barlow Semi Condensed', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+    }
+    .btn-primary:hover {
+      background-color: #163A74;
+    }
     .col-md-9 {
         display: flex;
         justify-content: center; /* Centers horizontally */
@@ -30,8 +84,8 @@
 
     /* Making the form larger */
     #inputForm {
-        width: 100%; /* Adjust the width as needed */
-        padding: 20px; /* Add spacing inside the form */
+        width: 100%;
+        padding: 20px; 
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional: Add a shadow for better focus */
         border-radius: 8px; /* Slightly round the corners */
         background-color: #f8f9fa; /* Light background for contrast */
@@ -47,7 +101,7 @@
 
 .stat-result td {
     padding: 8px 12px;
-    border-bottom: 1px solid #e0e0e0;
+    border-bottom: 1px solid #000000;
     text-align: center; 
     margin-left: auto;
     margin-right: auto;
@@ -55,17 +109,17 @@
 
 .stat-label {
     font-weight: bold;
-    background-color: #f9f9f9;
+    
     width: 200px;
     text-align: center; 
 }
 
 .stat-value {
-    color: #333;
+    color: #ffffff;
 }
 
 .stat-result:hover {
-    background-color: #f1f1f1;
+    background-color: #545454;
 }
 table {
     margin: 20px auto; /* Auto left/right centers it */
@@ -88,10 +142,10 @@ table {
 .parent {
   
   display: flex;           
-  flex-direction: row;     /* side-by-side layout */
-  justify-content: center; /* optional: center them */
-  align-items: flex-start; /* optional: align tops */
-  gap: 2rem;               /* optional: spacing between chart & table */
+  flex-direction: row;     
+  justify-content: center; 
+  align-items: flex-start; 
+  gap: 2rem;               
   margin: 1rem;
   padding: 2rem 2rem;
   text-align: center;
@@ -102,145 +156,124 @@ table {
   padding: 1rem 1rem;
   vertical-align: middle;
 }
-.back-arrow {
-    border-radius: 50%; /* Makes it circular */
-    width: 50px; /* Set diameter */
-    height: 50px; /* Set diameter */
-    display: flex; /* Center content */
-    justify-content: center;
-    align-items: center;
 
-}
-
-.back-arrow:hover {
-  background-color: #0d6efd; /* Change background color on hover */
-  color: white;
-}
-
-.back-arrow i {
-  margin-right: 8px;
-  font-size: 24px; 
-}
-#formContainer{
-    display: flex;   
-    justify-content: center;
-    align-items: center;
-
-}
-
-
-    </style>
+  </style>
 </head>
+
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <div class="container">
-            <a href="/" class="back-arrow">
-                <i class="bi bi-arrow-left"></i> 
-              </a>
-        </div>
-    </nav>
+  <!-- Top Bar -->
+  <nav class="navbar">
+    <a href="/" class="back-arrow">&#8592;</a>
+    <a class="navbar-brand" href="/">StatPilot</a>
+  </nav>
 
+ 
+  <div class="container mt-4">
+    <h2 class="mb-4" style="font-family: 'Barlow Semi Condensed', sans-serif; font-size: 2rem;">
+      StatPilot
+    </h2>
 
+    <form>
+      <!-- Opposing Team -->
+      <div class="mb-3">
+        <label for="opponent" class="form-label">Opposing Team</label>
+        <select class="form-select" id="opponent" name="opponent">
+          <option value="">Select Team</option>
+          <option value="ATL">Atlanta Hawks</option>
+          <option value="BOS">Boston Celtics</option>
+          <option value="BKN">Brooklyn Nets</option>
+          <option value="CHA">Charlotte Hornets</option>
+          <option value="CHI">Chicago Bulls</option>
+          <option value="CLE">Cleveland Cavaliers</option>
+          <option value="DAL">Dallas Mavericks</option>
+          <option value="DEN">Denver Nuggets</option>
+          <option value="DET">Detroit Pistons</option>
+          <option value="GS">Golden State Warriors</option>
+          <option value="HOU">Houston Rockets</option>
+          <option value="IND">Indiana Pacers</option>
+          <option value="LAC">Los Angeles Clippers</option>
+          <option value="LAL">Los Angeles Lakers</option>
+          <option value="MEM">Memphis Grizzlies</option>
+          <option value="MIA">Miami Heat</option>
+          <option value="MIL">Milwaukee Bucks</option>
+          <option value="MIN">Minnesota Timberwolves</option>
+          <option value="NO">New Orleans Pelicans</option>
+          <option value="NY">New York Knicks</option>
+          <option value="OKC">Oklahoma City Thunder</option>
+          <option value="ORL">Orlando Magic</option>
+          <option value="PHI">Philadelphia 76ers</option>
+          <option value="PHX">Phoenix Suns</option>
+          <option value="POR">Portland Trail Blazers</option>
+          <option value="SAC">Sacramento Kings</option>
+          <option value="SA">San Antonio Spurs</option>
+          <option value="TOR">Toronto Raptors</option>
+          <option value="UTA">Utah Jazz</option>
+          <option value="WSH">Washington Wizards</option>
+          
+        </select>
+      </div>
 
+ 
+      <div class="mb-3">
+        <label for="type" class="form-label">Stat Type</label>
+        <select class="form-select" id="type" name="type">
+          <option value="">Select Stat</option>
+          <option value="PTS">Points</option>
+          <option value="AST">Assists</option>
+          <option value="REB">Rebounds</option>
+          
+        </select>
+      </div>
 
+      <!-- Player -->
+      <div class="mb-3">
+        <label for="player-label" class="form-label">Player</label>
+        <select class="form-select" id="player" name="player">
+          <option value="">Select Player</option>
+          <option value="Lebron">Lebron James</option>
+          <option value="Steph">Stephen Curry</option>
+          <option value="Jokic">Nikola Jokic</option>
+          <option value="Giannis">Giannis Antetokounmpo</option>
+          <option value="Klay">Klay Thompson</option>
+          <option value="Kevin">Kevin Durant</option>
+          <option value="Anthony">Anthony Edwards</option>
+          <option value="Shai">Shai Gilgeous-Alexander</option>
+          <option value="Jayson">Jayson Tatum</option>
+          <option value="Tyrese">Tyrese Haliburton</option>
+          
+        </select>
+      </div>
 
-    <div class="container mt-4">
-        <div class="d-flex justify-content-between align-items-center mb-4">
-            <h1>Probability</h1>
-        </div>
+     
+      <div class="mb-3">
+        <label for="stat_line" class="form-label">Stat Line</label>
+        <input
+          type="number"
+          class="form-control"
+          id="stat_line"
+          name="stat_line"
+          step="any"
+          placeholder="e.g., 28.5"
+        />
+      </div>
 
-        
+    
+      <button type="submit" class="btn btn-primary">
+        Get Stats
+      </button>
+    </form>
+  </div>
 
-
-        <div class="row">
-            
-            <div class="col-md-9" id="formContainer">
-                <form id="inputForm" >
-                    <div class="mb-3">
-                        <label for="opponent" id="opponent-label" class="form-label" style="color: red;">Opposing Team</label><br>
-                        <select id="opponent" name="opponent" required>
-                                <option value = ""></option> 
-                                <option value="ATL">Atlanta Hawks</option>
-                                <option value="BOS">Boston Celtics</option>
-                                <option value="BKN">Brooklyn Nets</option>
-                                <option value="CHA">Charlotte Hornets</option>
-                                <option value="CHI">Chicago Bulls</option>
-                                <option value="CLE">Cleveland Cavaliers</option>
-                                <option value="DAL">Dallas Mavericks</option>
-                                <option value="DEN">Denver Nuggets</option>
-                                <option value="DET">Detroit Pistons</option>
-                                <option value="GS">Golden State Warriors</option>
-                                <option value="HOU">Houston Rockets</option>
-                                <option value="IND">Indiana Pacers</option>
-                                <option value="LAC">Los Angeles Clippers</option>
-                                <option value="LAL">Los Angeles Lakers</option>
-                                <option value="MEM">Memphis Grizzlies</option>
-                                <option value="MIA">Miami Heat</option>
-                                <option value="MIL">Milwaukee Bucks</option>
-                                <option value="MIN">Minnesota Timberwolves</option>
-                                <option value="NO">New Orleans Pelicans</option>
-                                <option value="NY">New York Knicks</option>
-                                <option value="OKC">Oklahoma City Thunder</option>
-                                <option value="ORL">Orlando Magic</option>
-                                <option value="PHI">Philadelphia 76ers</option>
-                                <option value="PHX">Phoenix Suns</option>
-                                <option value="POR">Portland Trail Blazers</option>
-                                <option value="SAC">Sacramento Kings</option>
-                                <option value="SA">San Antonio Spurs</option>
-                                <option value="TOR">Toronto Raptors</option>
-                                <option value="UTA">Utah Jazz</option>
-                                <option value="WSH">Washington Wizards</option>
-                        </select>
-                    </div>
-                    <div class="mb-3">
-                        <label for="type">Stat Type</label><br>
-                        <select id="type" name="type" required>
-                            <option value=""></option>
-                            <option value="PTS">PTS</option>
-                            <option value="AST">AST</option>
-                            <option value="REB">REB</option>
-                        </select>
-                    </div>
-                    <div class="mb-3">
-                        <label for="player-label">Player</label><br>
-                        <select id="player" name="player" required>
-                            <option value=""></option>
-                            <option value="Lebron">Lebron James</option>
-                            <option value="Steph">Stephen Curry</option>
-                            <option value="Jokic">Nikola Jokic</option>
-                            <option value="Giannis">Giannis Antetokounmpo</option>
-                            <option value="Klay">Klay Thompson</option>
-                            <option value="Kevin">Kevin Durant</option>
-                            <option value="Anthony">Anthony Edwards</option>
-                            <option value="Shai">Shai Gilgeous-Alexander</option>
-                            <option value="Jayson">Jayson Tatum</option>
-                            <option value="Tyrese">Tyrese Haliburton</option>
-                        </select>
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="stat_line">Stat Line </label><br>
-                        <input type="number" class="form-control" id="stat_line" name="stat_line" step="any" required>
-                    </div>
-                   
-                    <div class="d-grid">
-                        <button type="submit" class="btn btn-primary">Le'Gamble</button>
-                    </div>
-                </form>
-            </div>
-        </div>
+  <div class="parent">
+    <div id="results" class="child">
     </div>
 
-    <div class="parent">
-        <div id="results" class="child">
-        </div>
-
-        <div id="chartContainer" class ="child">
-            <canvas id="myChart" width="600" height="600"></canvas>
-        </div>    
-    </div>
-
-    <script src="/static/main-nba.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <div id="chartContainer" class ="child">
+        <canvas id="myChart" width="600" height="600"></canvas>
+    </div>    
+</div>
+  
+  <script src="/static/main-nba.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </body>
 </html>
